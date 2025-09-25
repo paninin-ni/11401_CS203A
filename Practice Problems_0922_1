@@ -29,7 +29,7 @@ int main(){  // add
 
   if (array == NULL) {   // 回傳檢查 // add
      printf("realloc failed\n");
-     free(arrary); // 擴充失敗釋放原記憶體
+     free(array); // 擴充失敗釋放原記憶體
      exit(1);
   }
 
