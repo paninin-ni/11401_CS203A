@@ -6,28 +6,42 @@ int main(){  // add
   int *array; // 一維陣列
   int n = 10;
 
-  array = (int *) malloc(n * sizeof(int)); // 配置記憶體區塊
+  array = (int *) malloc(n * sizeof(int)); // malloc()配置記憶體區塊
 
-  if (array == NULL) { // 回傳array檢查是否NULL(配置失敗null pointer) // add
+  if (array == NULL) {  // 回傳array檢查是否NULL(配置失敗null pointer) // add
      printf("malloc failed\n");
      exit(1); 
+  }
 
   // initial(最初)array
   for(int i = 0; i < n; i++) {
     array[i] = i + 1;
   }
-  // expanded(擴充)array
+
+  // 印出原始array
   for (int i = 0; i < n; i++) {
       printf("%d ", array[i]);
   }
 
-  n = n * 2;
-
+  n = n * 2; // 擴充size of array
   array = (int *) realloc(array, n * sizeof(int));
 
-  for (int i = n/2; i < n; i++) {
-      array[i] = i + 1;   // initialize new elements
+
+  if (array == NULL) {   // 回傳檢查 // add
+     printf("realloc failed\n");
+     free(arrary); // 擴充失敗釋放原記憶體
+     exit(1);
   }
-  free(array) // 釋放掉記憶體區塊 // add
+
+  for (int i = n/2; i < n; i++) {
+      array[i] = i + 1;   // initialize new elements(初始化新增加的元素)
+  }
+
+  // 印出擴充後array // add
+  for (int i = 0; i < n; i++) {
+      printf("%d ", array[i]);
+  }
+
+  free(array); // 釋放掉記憶體區塊 // add
   return 0;  // add
 }  // add
