@@ -15,9 +15,7 @@
 #include "hash_fn.hpp"
 
 int myHashInt(int key, int m) {
-    if (key < 0) {
-        key = -key;
-    }
+    if (key < 0) key = -key;
     return key % m;  // basic division method
 }
 
