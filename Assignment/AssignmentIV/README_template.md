@@ -5,21 +5,27 @@ Students are expected to implement and analyze the behavior of hash functions,
 evaluate their efficiency, and understand their applications in computer science.
 
 Developer: s1131527周品岑
-Email: s1131527@mail.yzu.edu.tw
+Email: 245joymelissa@gmail.com
 
 ## My Hash Function
 ### Integer Keys 
 - Formula / pseudocode:
-  ```text
-  [Your implementation here]
-  ```
+  int myHashInt(int key, int m) {
+    if (key < 0) key = -key;
+    return key % m;  // basic division method
+}
 - Rationale: [Explain your design choices and how they minimize collisions.]
 
 ### Non-integer Keys
 - Formula / pseudocode:
-  ```text
-  [Your implementation here]
-  ```
+  int myHashString(const std::string& str, int m) {
+    unsigned long hash = 0;
+    const unsigned int p = 31;
+    for (char c : str) {
+        hash = hash * p + static_cast<unsigned char>(c);
+    }
+    return static_cast<int>(hash % m);  // basic division method
+}
 - Rationale: [Explain your approach and its effectiveness for non-integer keys.]
 
 ## Experimental Setup
@@ -89,6 +95,24 @@ Email: s1131527@mail.yzu.edu.tw
   21      1
   22      2
   ...
+  23      3
+  24      4
+  25      5
+  26      6
+  27      7
+  28      8
+  29      9
+  30      0
+  51      1
+  52      2
+  53      3
+  54      4
+  55      5
+  56      6
+  57      7
+  58      8
+  59      9
+  60      0
 
   === Table Size m = 11 ===
   Key     Index
@@ -96,6 +120,24 @@ Email: s1131527@mail.yzu.edu.tw
   21      10
   22      0
   ...
+  23      1
+  24      2
+  25      3
+  26      4
+  27      5
+  28      6
+  29      7
+  30      8
+  51      7
+  52      8
+  53      9
+  54      10
+  55      0
+  56      1
+  57      2
+  58      3
+  59      4
+  60      5
 
   === Table Size m = 37 ===
   Key     Index
@@ -103,6 +145,24 @@ Email: s1131527@mail.yzu.edu.tw
   21      21
   22      22
   ...
+  23      23
+  24      24
+  25      25
+  26      26
+  27      27
+  28      28
+  29      29
+  30      30
+  51      14
+  52      15
+  53      16
+  54      17
+  55      18
+  56      19
+  57      20
+  58      21
+  59      22
+  60      23
 
   === Hash Function Observation (C++ Version) ===
 
@@ -112,6 +172,24 @@ Email: s1131527@mail.yzu.edu.tw
   21      1
   22      2
   ...
+  23      3
+  24      4
+  25      5
+  26      6
+  27      7
+  28      8
+  29      9
+  30      0
+  51      1
+  52      2
+  53      3
+  54      4
+  55      5
+  56      6
+  57      7
+  58      8
+  59      9
+  60      0
 
   === Table Size m = 11 ===
   Key     Index
@@ -119,6 +197,24 @@ Email: s1131527@mail.yzu.edu.tw
   21      10
   22      0
   ...
+  23      1
+  24      2
+  25      3
+  26      4
+  27      5
+  28      6
+  29      7
+  30      8
+  51      7
+  52      8
+  53      9
+  54      10
+  55      0
+  56      1
+  57      2
+  58      3
+  59      4
+  60      5
 
   === Table Size m = 37 ===
   Key     Index
@@ -126,31 +222,68 @@ Email: s1131527@mail.yzu.edu.tw
   21      21
   22      22
   ...
-  ```
+  23      23
+  24      24
+  25      25
+  26      26
+  27      27
+  28      28
+  29      29
+  30      30
+  51      14
+  52      15
+  53      16
+  54      17
+  55      18
+  56      19
+  57      20
+  58      21
+  59      22
+  60      23
 
 - Example output for strings:
   ```
   === String Hash (m = 10) ===
   Key     Index
   -----------------
-  cat     0
-  dog     0
-  ...
+  cat     2
+  dog     4
+  bat     1
+  cow     9
+  ant     3
+  owl     8
+  bee     0
+  hen     5
+  pig     0
+  fox     3
 
   === String Hash (m = 11) ===
   Key     Index
   -----------------
-  cat     0
-  dog     0
-  ...
+  cat     10
+  dog     6
+  bat     6
+  cow     7
+  ant     9
+  owl     6
+  bee     5
+  hen     5
+  pig     0
+  fox     9
 
   === String Hash (m = 37) ===
   Key     Index
   -----------------
-  cat     0
-  dog     0
-  ...
-  ```
+  cat     27
+  dog     3
+  bat     28
+  cow     20
+  ant     25
+  owl     23
+  bee     26
+  hen     29
+  pig     27
+  fox     18
 
 - Observations: Outputs align with the analysis, showing better distribution with prime table sizes.
 - Example output for integers:
