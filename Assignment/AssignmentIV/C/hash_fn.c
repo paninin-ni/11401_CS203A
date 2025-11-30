@@ -16,9 +16,7 @@
 #include "hash_fn.h"
 
 int myHashInt(int key, int m) {
-    if (key < 0) {
-        key = -key; 
-    }
+    if (key < 0) key = -key; 
     return key % m;  // division method example
 }
 
