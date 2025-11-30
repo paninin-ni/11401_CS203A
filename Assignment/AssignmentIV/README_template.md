@@ -10,7 +10,8 @@ Email: 245joymelissa@gmail.com
 ## My Hash Function
 ### Integer Keys 
 - Formula / pseudocode:
-```   int myHashInt(int key, int m) {
+```
+int myHashInt(int key, int m) {
     if (key < 0) key = -key;
     return key % m;  // basic division method
 }
