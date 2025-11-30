@@ -20,7 +20,8 @@ int myHashInt(int key, int m) {
 
 ### Non-integer Keys
 - Formula / pseudocode:
-  int myHashString(const std::string& str, int m) {
+```
+int myHashString(const std::string& str, int m) {
     unsigned long hash = 0;
     const unsigned int p = 31;
     for (char c : str) {
@@ -28,6 +29,7 @@ int myHashInt(int key, int m) {
     }
     return static_cast<int>(hash % m);  // basic division method
 }
+```
 - Rationale: [Explain your approach and its effectiveness for non-integer keys.]
 
 ## Experimental Setup
